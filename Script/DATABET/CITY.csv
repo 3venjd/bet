@@ -1,0 +1,501 @@
+ID_CITY;CITY_NAME;FK_DEPARTMENT
+1;Pocohuanca;1
+2;Yuanjue;2
+3;Prochowice;3
+4;San Francisco;4
+5;Duyên Hải;5
+6;Lonpao Dajah;6
+7;Mabuhay;7
+8;Houten;8
+9;Shaxi;9
+10;Xiumei;10
+11;Velká Bystřice;11
+12;Carapo;12
+13;Mongu;13
+14;Talon;14
+15;Masaran;15
+16;Shangtian;16
+17;Puerto Aisén;17
+18;Pailitas;18
+19;Kardítsa;19
+20;Goričan;20
+21;Kaminoyama;21
+22;Vaitogi;22
+23;Kebonan;23
+24;Piippola;24
+25;Zhangaqorghan;25
+26;Chone;26
+27;Khatsyezhyna;27
+28;James Craik;28
+29;Pitumarca;29
+30;Itaqui;30
+31;Futtsu;31
+32;Krasnokholmskiy;32
+33;Parista;33
+34;Buesaco;34
+35;Lorino;35
+36;Ozerki;36
+37;Impendle;37
+38;Uddevalla;38
+39;Abomey-Calavi;39
+40;Mulhouse;40
+41;La Ravoire;41
+42;Taguisa;42
+43;Zhitan;43
+44;Kenarilang;44
+45;Khudoyelanskoye;45
+46;Petit Valley;46
+47;Wulipu;47
+48;Pīshvā;48
+49;Kipini;49
+50;Perštejn;50
+51;Meirinhas;51
+52;Chipaque;52
+53;Dingcheng;53
+54;Dibba Al-Hisn;54
+55;Espinho;55
+56;Manaquiri;56
+57;Lynchburg;57
+58;Kabūdarāhang;58
+59;Likwatang Timur;59
+60;Margherita;60
+61;Sérvia;61
+62;Kikuchi;62
+63;Hejia;63
+64;Zhizhong;64
+65;Gaozhou;65
+66;Balakliya;66
+67;Lusong;67
+68;Ramon Magsaysay;68
+69;Xazgat;69
+70;Haihui;70
+71;Lipov;71
+72;Cadagmayan Norte;72
+73;Jacksonville;73
+74;San Jose;74
+75;Zhigong;75
+76;Al Fākhūrah;76
+77;Lugouqiao;77
+78;Disina;78
+79;Abadiânia;79
+80;Qianyou;80
+81;Tsu-shi;81
+82;Västervik;82
+83;Jinsha;83
+84;Agía Varvára;84
+85;Valencia;85
+86;Nghĩa Hành;86
+87;Kastsyukovichy;87
+88;Cangshi;88
+89;San Francisco;89
+90;Quinta;90
+91;Mbocayaty;91
+92;Ernestinovo;92
+93;Pingqiao;93
+94;Leonárisso;94
+95;Áyios Vasílios;95
+96;Al Bīrah;96
+97;Kukës;97
+98;Houba;98
+99;Bayan Uula Sumu;99
+100;Nipawin;100
+101;Qiaodong;101
+102;Évreux;102
+103;Biryulëvo Zapadnoye;103
+104;Lab;104
+105;Jutiapa;105
+106;Casablanca;106
+107;Tushi;107
+108;New Orleans;108
+109;Cojutepeque;109
+110;Stodolishche;110
+111;Kiszkowo;111
+112;Ożarów;112
+113;Tanjungpecinan Utara;113
+114;Pinheiro Machado;114
+115;Roodepoort;115
+116;Visby;116
+117;Saryshaghan;117
+118;Lorient;118
+119;Yuyue;119
+120;Ash Shuhadā’;120
+121;Dutsin Ma;121
+122;Eirunepé;122
+123;Wattala;123
+124;Dębowa Łąka;124
+125;Vykhino-Zhulebino;125
+126;Cikoneng;126
+127;Maras;127
+128;Pajapita;1
+129;Tursunzoda;2
+130;Nagbukel;3
+131;An Nāşirah;4
+132;Canala;5
+133;Motrico;6
+134;Guintubhan;7
+135;Jiexiu;8
+136;Saint-Avold;9
+137;Los Fresnos;10
+138;Yuanjiazhuang;11
+139;Kukulu;12
+140;Ciudad Arce;13
+141;Khairpur Nathan Shāh;14
+142;Gore;33
+143;Muli;34
+144;Ústí nad Orlicí;35
+145;Grazhdanka;36
+146;Chanthaburi;37
+147;Qijiang;38
+148;Brześć Kujawski;39
+149;Divo;40
+150;Tiexi;41
+151;Bayabas;42
+152;San Francisco de Yare;43
+153;Guyancourt;44
+154;Ulme;45
+155;Jiaomingsi;46
+156;Buea;47
+157;Magatos;48
+158;Mircze;49
+159;Ouranoupolis;50
+160;Walagar;51
+161;Pedro Santana;52
+162;Berezna;53
+163;Oni;54
+164;Kairouan;55
+165;Bolhrad;56
+166;Tubarão;57
+167;Alpedrinha;58
+168;Tiyuguan;59
+169;Zolochiv;60
+170;Deir Ḥannā;61
+171;Quma;62
+172;Jurak Lao’;63
+173;Pangkalan;64
+174;Agraharam;65
+175;Al Manāqil;66
+176;San Bernardino;67
+177;Candi Prambanan;68
+178;Baohe;87
+179;Porto Calvo;88
+180;Jiahe;89
+181;Gala;90
+182;Kalatongke;91
+183;Ibagué;92
+184;Heishui;93
+185;Santa Tecla;94
+186;Boa Vista;95
+187;Palekastro;96
+188;Mulyadadi;97
+189;Jīwani;98
+190;Berdorf;99
+191;Headlands;100
+192;Lusong;101
+193;Amado Nervo;102
+194;Licheng;103
+195;Yugang;104
+196;Kafir Qala;105
+197;Sayang Lauq;106
+198;Angkahgede;107
+199;Nikhom Phattana;108
+200;El Cardo;109
+201;Shaoxing;110
+202;San Fernando;111
+203;North Vancouver;112
+204;Zhengmo;113
+205;Colinas;114
+206;Laiponda;115
+207;El Carmen;116
+208;Xinji;117
+209;Muktāgācha;118
+210;Gatak;119
+211;Longtanhe;120
+212;Beizhuang;121
+213;Saint-Jean-de-Monts;122
+214;Villejuif;123
+215;Ocongate;124
+216;Nowogard;125
+217;Sumberejo;126
+218;Artemisa;127
+219;Doruchów;9
+220;Plettenberg Bay;10
+221;Heilangkou;11
+222;Dongping;12
+223;San José de Colinas;13
+224;Blokdesa Situgede;14
+225;Huanghai;15
+226;Pécs;16
+227;Kraaifontein;17
+228;Pasirpanjang;18
+229;Mehrān;19
+230;Tikiw;20
+231;Qiujima;21
+232;Lomma;22
+233;Nalbandyan;23
+234;Thị Trấn Nước Hai;24
+235;Rawa;25
+236;Staryy Merchyk;26
+237;Tuqiao;27
+238;Rikitea;1
+239;Yanjiang;2
+240;Morelos;3
+241;Wao;4
+242;Tullinge;5
+243;Vila Flor;6
+244;Zhangxi;7
+245;Yonago;8
+246;Fada;9
+247;Pepe;10
+248;Aroeira;11
+249;Gyumri;12
+250;Arāk;13
+251;Jingdang;14
+252;Lipiany;15
+253;Kasongo;118
+254;Stockholm;119
+255;Xianglong;120
+256;Urasqui;121
+257;Koltubanovskiy;122
+258;Dongshan;123
+259;Hema;124
+260;Záhorovice;125
+261;Magutian;126
+262;Calaba;127
+263;Open Stage;10
+264;Gombong;11
+265;Cirateun;12
+266;Queluz;13
+267;Vnanje Gorice;14
+268;Tuopu Luke;15
+269;Port Hawkesbury;16
+270;Lieyu;17
+271;Zhob;18
+272;Angelochóri;19
+273;Vancouver;20
+274;Cilongkrangpusaka;21
+275;Ban Chalong;22
+276;Bethal;23
+277;Campo Alegre;24
+278;Ciechanowiec;25
+279;Tanjungrejo Lor;26
+280;Tieba;27
+281;Anyar;28
+282;Aş Şanamayn;29
+283;Qian’an;30
+284;Cheyenne;31
+285;Carmelo;32
+286;Guanba;33
+287;Simuay;34
+288;Masarayao;35
+289;Parabon;36
+290;Dubki;37
+291;Ar Rawḑah;38
+292;Krajan Nglinggis;39
+293;Guaíra;40
+294;Faraulep;41
+295;Ereira;42
+296;Pyatnitskoye;43
+297;Cabo Frio;44
+298;Rostov;45
+299;Kuala Lumpur;23
+300;Palaiseau;24
+301;Parungjawa;10
+302;Suchedniów;11
+303;Qidu;12
+304;Fojo;13
+305;Asempapan;14
+306;Coishco;15
+307;Yefimovskiy;16
+308;Quintas;17
+309;Mýrina;18
+310;Casa Branca;19
+311;Vallentuna;20
+312;Jiamaogong;21
+313;Camlachie;22
+314;Kambia;23
+315;Wairiang;24
+316;Vidago;25
+317;Kaz;26
+318;Syriam;27
+319;Quwaysinā;28
+320;Čajniče;29
+321;San Antonio Huista;30
+322;Yuli;31
+323;Ballina;32
+324;Liuhe;33
+325;Yulin;34
+326;Bombon;35
+327;Rinang;36
+328;Javalera;37
+329;Makīnsk;38
+330;Nor Yerznka;39
+331;Bhadrapur;40
+332;Qingguang;41
+333;San Antonio;42
+334;Blimbing;43
+335;Kirzhach;44
+336;Braunschweig;45
+337;Le Havre;20
+338;Évry;21
+339;Kaminokawa;22
+340;Saint Louis;23
+341;Kampungbaru;24
+342;Benito Juarez;35
+343;Macedo de Cavaleiros;36
+344;Cimaung Kidul;37
+345;Huitong;115
+346;Koloniya Zastav’ye;116
+347;Aegela;117
+348;Sîngerei;118
+349;Tamel;119
+350;Shuitianhe;120
+351;Solna;121
+352;Kabulusan;122
+353;Mlangali;123
+354;Tongkiling;124
+355;Xindeng;125
+356;Belén de Umbría;126
+357;Cisasak;127
+358;Quixeramobim;1
+359;Sam Phran;2
+360;Liure;3
+361;Santa Rita Aplaya;4
+362;Miedzichowo;5
+363;Čoka;6
+364;Daping;7
+365;Manjakandriana;8
+366;Jiangfang;9
+367;Shujāābād;10
+368;Maoping;11
+369;Fteliá;12
+370;Rolante;13
+371;Long Beluah;14
+372;Pikalëvo;15
+373;Vimieiro;16
+374;Kungsbacka;17
+375;Yuracyacu;18
+376;Tashang;19
+377;Curibaya;20
+378;Světlá nad Sázavou;21
+379;Buracan;22
+380;Khvalynsk;23
+381;Karangwaru;24
+382;Krajan Sumurtawang;25
+383;Gisiliba;26
+384;Shuidong;27
+385;Pandat;28
+386;Livramento do Brumado;29
+387;Spitak;30
+388;Huaidao;31
+389;Évreux;32
+390;Storozhynets’;33
+391;Al Mashāf;34
+392;Jardim do Seridó;35
+393;Piñas;36
+394;La Roxas;37
+395;Ferbane;38
+396;Lady Frere;39
+397;Yixingfu;40
+398;Shuangtang;41
+399;Kari;42
+400;Lubango;43
+401;Xaçmaz;44
+402;Covão da Carvalha;45
+403;Snizhne;46
+404;Neuzina;47
+405;Kediren;48
+406;Tiout;49
+407;Miaotang;50
+408;Almeirim;51
+409;Mangli;52
+410;Mafa;53
+411;Corga;54
+412;Banjaranyar;55
+413;Peukanbada;56
+414;Osiek;57
+415;Krynice;58
+416;Freiburg im Breisgau;59
+417;Těšetice;60
+418;Canguaretama;61
+419;Donostia-San Sebastian;62
+420;Red Hill;63
+421;Villeneuve-la-Garenne;64
+422;‘Arīqah;65
+423;Mont-Laurier;66
+424;Yaita;67
+425;Alor Setar;68
+426;Delanggu;69
+427;Yongxing;70
+428;Sérvia;71
+429;Narutō;72
+430;Man;73
+431;Chyšky;74
+432;Bazhu;75
+433;Jinsheng;76
+434;Rinbung;77
+435;Xiuyu;78
+436;Al Funayţīs;79
+437;Sukodono;80
+438;Nangong;81
+439;Vilarinho da Castanheira;82
+440;Bayside;83
+441;Flor da Mata;84
+442;Ryazanskaya;85
+443;Bacnar;86
+444;El Doncello;87
+445;Paris 15;88
+446;Lefortovo;89
+447;L'Aigle;90
+448;Vinha;91
+449;Weetombo;92
+450;Skrwilno;93
+451;Tulsa;94
+452;Groningen;95
+453;Lyon;96
+454;Gryfów Śląski;97
+455;Irupi;98
+456;Thạnh Mỹ;99
+457;Honglu;100
+458;Yuzawa;101
+459;Jiezi;102
+460;Ourense;103
+461;Xiabuji;104
+462;Lekas;105
+463;Longquan;106
+464;Vršac;107
+465;Ngulahan;108
+466;Fukuroi;109
+467;Tajimi;110
+468;Kota Kinabalu;111
+469;El Paso;112
+470;Peski;113
+471;Telêmaco Borba;114
+472;Ginir;115
+473;Yongfeng;116
+474;Voloka;117
+475;Guiyang;118
+476;Sete Cidades;119
+477;Hailang;120
+478;Krajan Karangsari;121
+479;Mokronog;122
+480;Fundación;123
+481;Karanlukh;124
+482;Vol’sk;125
+483;Doropayung;126
+484;Uralets;127
+485;Panbang;81
+486;Chenxiang;82
+487;Pont Cassé;83
+488;Dailing;84
+489;Bahía Blanca;85
+490;Lengor;86
+491;Staroyur’yevo;87
+492;Euclides da Cunha;88
+493;Kołczygłowy;89
+494;Eskilstuna;90
+495;Nikhom Phattana;91
+496;La Paz;123
+497;Longshan;124
+498;Huagang;125
+499;Sewon;126
+500;Wang Hin;127
