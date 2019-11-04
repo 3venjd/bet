@@ -1,0 +1,1 @@
+apuesta --> tipo de apuesta(diferentes apuestas de un mismo user
