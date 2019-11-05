@@ -260,7 +260,7 @@ CREATE TABLE PAYMENT_CLASS (
 ID_PAYMENT_CLASS NUMBER(10) NOT NULL,
 NAME_PAYMENT VARCHAR2(100) NOT NULL,
 MINIMUM_VALUE FLOAT NOT NULL,
-MAXIIMUM_VALUE FLOAT NOT NULL,
+MAXIIMUM_VALUE FLOAT,
 active varchar2(1) not null,
 CONSTRAINT PK_ID_PAYMENT_CLASS PRIMARY KEY (ID_PAYMENT_CLASS)
 )TABLESPACE BET_ITM; 
@@ -270,6 +270,8 @@ CREATE TABLE DEPOSIT (
 ID_DEPOSIT NUMBER(10) NOT NULL,
 TRANSACTION_DATE TIMESTAMP NOT NULL,
 STATUS VARCHAR2(50) NOT NULL,
+    CONSTRAINT CK_STATUS
+    CHECK(STATUS = 'pendiente' or STATUS = 'En Proceso' or STATUS = 'rechazada' or STATUS = 'exitoso'),
 active varchar2(1) not null,
 FK_USER INT,
 FK_PAYMENT_CLASS INT,
@@ -351,8 +353,14 @@ create table quota_macht
  ID INT generated always as identity,
 id_quota_macht number(10) not null,
 quota_1 float not null,
+    CONSTRAINT CK_quota1
+    CHECK(quota_1 >1 ),
 quota_2 float not null,
+    CONSTRAINT CK_quota2
+    CHECK(quota_2>1 ),
 quota_3 float not null,
+    CONSTRAINT CK_quota3
+    CHECK(quota_3 >1 ),
 winner_quota int not null,
 active varchar2(1) not null,
 fk_match int,
