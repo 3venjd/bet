@@ -1,0 +1,81 @@
+ID;ID_COUNTRY;COUNTRY_NAME;ACTIVE;PREFIX
+1;1;China;N;CN
+2;2;COLOMBIA;Y;CO
+3;3;Indonesia;Y;ID
+4;4;Greece;N;GR
+5;5;Canada;N;CA
+6;6;United States;N;US
+7;7;Guatemala;Y;GT
+8;8;Czech Republic;Y;CZ
+9;9;Portugal;Y;PT
+10;10;South Africa;Y;ZA
+11;11;Brazil;N;BR
+12;12;Albania;N;AL
+13;13;Russia;Y;RU
+14;14;Somalia;Y;SO
+15;15;Iran;Y;IR
+16;16;Japan;N;JP
+17;17;Mexico;N;MX
+18;18;Belarus;N;BY
+19;19;Ukraine;N;UA
+20;20;Ethiopia;N;ET
+21;21;Malaysia;Y;MY
+22;22;Cameroon;N;CM
+23;23;Sweden;N;SE
+24;24;France;N;FR
+25;25;Slovenia;N;SI
+26;26;Poland;Y;PL
+27;27;Syria;Y;SY
+28;28;Madagascar;N;MG
+29;29;Netherlands;Y;NL
+30;30;Uganda;N;UG
+31;31;Trinidad and Tobago;Y;TT
+32;32;Panama;N;PA
+33;33;Luxembourg;N;LU
+34;34;Sierra Leone;N;SL
+35;35;Croatia;Y;HR
+36;36;Egypt;N;EG
+37;37;Spain;Y;ES
+38;38;Ghana;N;GH
+39;39;Vietnam;N;VN
+40;40;Myanmar;Y;MM
+41;41;Saudi Arabia;N;SA
+42;42;Argentina;Y;AR
+43;43;Latvia;Y;LV
+44;44;Finland;N;FI
+45;45;Kazakhstan;N;KZ
+46;46;Ireland;Y;IE
+47;47;Nigeria;Y;NG
+48;48;Cuba;Y;CU
+49;49;Kuwait;N;KW
+50;50;Niger;Y;NE
+51;51;Thailand;N;TH
+52;52;Israel;N;IL
+53;53;Mongolia;N;MN
+54;54;Palestinian;Y;PS
+55;55;Peru;Y;PE
+56;56;New Caledonia;Y;NC
+57;57;Afghanistan;N;AF
+58;58;Estonia;N;EE
+59;59;Norway;Y;NO
+60;60;Reunion;N;RE
+61;61;Chile;N;CL
+62;62;Lithuania;N;LT
+63;63;Serbia;Y;RS
+64;64;Nepal;N;NP
+65;65;Faroe Islands;Y;FO
+66;66;Honduras;Y;HN
+67;67;Pakistan;N;PK
+68;68;Kyrgyzstan;Y;KG
+69;69;Australia;N;AU
+70;70;Uzbekistan;N;UZ
+71;71;United Arab Emirates;N;AE
+72;72;Bosnia and Herzegovina;Y;BA
+73;73;Yemen;N;YE
+74;74;Tanzania;Y;TZ
+75;75;Morocco;N;MA
+76;76;Azerbaijan;Y;AZ
+77;77;Zambia;N;ZM
+78;78;Ivory Coast;Y;CI
+79;79;Sri Lanka;Y;LK
+80;80;Tajikistan;N;TJ

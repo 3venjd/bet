@@ -327,7 +327,7 @@ create table bet_category
 id_bet_category number(10) not null,
 name_category varchar(100) not null,
 active varchar2(1) not null
-)tablespace bet_itm
+)tablespace bet_itm;
 
 
 create table macht
@@ -344,7 +344,7 @@ goals_team2_halftime int,
 total_goals_team1 int,
 total_goals_team2 int,
 active varchar2(1) not null
-)tablespace bet_itm
+)tablespace bet_itm;
 
 
 
@@ -368,7 +368,7 @@ fk_bet_category int,
 constraint pk_quota_macht primary key(id_quota_macht),
 foreign key(fk_match) references macht(id_match),
 foreign key(fk_bet_category) references bet_category(id_bet_category)
-)tablespace bet_itm
+)tablespace bet_itm;
 
 
 create table bet_detail
@@ -385,7 +385,7 @@ fk_bet int,
 constraint pk_quota_macht primary key(id_bet_detail),
 foreign key(fk_quota_macht) references quota_macht(id_quota_macht),
 foreign key(fk_bet) references bet(id_bet)
-)tablespace bet_itm
+)tablespace bet_itm;
 
 create table transactions
 (
@@ -399,7 +399,7 @@ active varchar2(1) not null,
 fk_user int,
 constraint pk_transactions primary key(id_transactions),
 foreign key(fk_user) references datauser(id_user)
-)tablespace bet_itm
+)tablespace bet_itm;
 
 
 create table columnas_
@@ -413,7 +413,7 @@ action varchar(10),
 user_ varchar(50),
 ip varchar2(18),
 active varchar2(1) not null
-)tablespace BET_AUDITING
+)tablespace BET_AUDITING;
 
 select * from columnas;
 
