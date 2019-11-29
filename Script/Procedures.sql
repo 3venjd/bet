@@ -1,12 +1,65 @@
 
 set serveroutput on;
 
+<<<<<<< Updated upstream
+=======
+ --PROCEDIMIENTO 1
+/*Crear una funci√≥n que reciba un argumento de tipo n√∫mero,
+este representar√° el id de un usuario; la funci√≥n retornar√° TRUE
+si el usuario se encuentra logueado en el sistema.
+(Usar esta funci√≥n en todos los procedimientos donde
+se requiera validar que el usuario tenga una sesi√≥n activa.)*/
+CREATE OR REPLACE FUNCTION FNC_USER_LOGUIN(
+    ID IN NUMBER )
+  RETURN VARCHAR2
+AS
+  LOGUEADO NUMBER;
+BEGIN
+  BEGIN
+    <<CONSULTA_USUARIO_LOGUEADO>>
+    SELECT COUNT(*)
+    INTO LOGUEADO
+    FROM LOGIN
+    WHERE END_HOUR IS NULL
+    AND FK_USER     = ID;
+  END;
+IF LOGUEADO >0 THEN
+  RETURN 'TRUE';
+END IF;
+RETURN 'FALSE';
+END FNC_USER_LOGUIN;
+
+--PROCEDIMIENTO 2
+/*Crear un procedimiento almacenado que reciba el nombre de la tabla y el id 
+del registro que se desea actualizar, la idea de este procedimiento es que
+active el soft deletion de dicho registro ubicado en dicha tabla. 
+Deber√° tener manejo de excepciones dado el caso que el nombre de la tabla
+y/o el id no existan. Nota: Usar (EXECUTE IMMEDIATE)[https://docs.oracle.com/
+cd/B19306_01/appdev.102/b14261/dynamic.htm#CHDGJEGD]*/
+
+CREATE OR REPLACE PROCEDURE PCN_PRUEBA 
+(
+  NOMBRE_TABLA IN VARCHAR2 
+, ID_REGISTRO IN NUMBER 
+) AS 
+BEGIN
+ EXECUTE IMMEDIATE 'UPDATE '||NOMBRE_TABLA ||' set active = ''N'' where id = :id' using ID_REGISTRO;
+END PCN_PRUEBA;
+
+>>>>>>> Stashed changes
 
 
 UPDATE MATCH_  SET STATUS = 'FINALIZADO' WHERE ID_MATCH = 1;
 
+<<<<<<< Updated upstream
 --------------------------------------------------------------------------------------------------------------------------------------------3-----------------------------------------------------------------------------------------------------------
 
+=======
+/*
+3) Crear un procedimiento que coloque un partido en estado "FINALIZADO", en ese momento deber· calcular las ganancias y pÈrdidas de cada apuesta hecha asociada a ese partido.
+
+*/
+>>>>>>> Stashed changes
 CREATE OR REPLACE PROCEDURE END_MATCH IS 
 
     CURSOR CR_PROFIT IS 
@@ -131,6 +184,174 @@ BEGIN
     CLOSE CR_PROFIT;
 END ;
 
+<<<<<<< Updated upstream
 --------------------------------------------------------------------------------------------------------------------------------------------4-----------------------------------------------------------------------------------------------------------
+=======
+/*
+PROCEDIMIENTO 4
+Crear un procedimiento que permita procesar el retiro de ganancias, recibir· el monto solicitado y el id del usuario, este procedimiento deber· insertar un registro en la tabla movimientos
+/ retiros en estado "PENDIENTE", posteriormente deber· validar si el saldo es suficiente, si el usuario ha proveÌdo toda la documentaciÛn exigida. TambiÈn validar· que si tenga una cuenta 
+y un banco v·lido registrado. Si todo se valida sin problemas, deber· colocar el estado "APROBADO" en el registro correspondiente y deber· restar del saldo disponible el valor retirado. 
+Si el procedimiento falla alguna validaciÛn, el estado pasar· a "RECHAZADO". El sistema deber· almacenar cu·l es la novedad por la cual se rechazÛ (Ya ustedes deciden si crean 
+una nueva tabla, o colocan en la tabla de retiros una columna de observaciones).
+
+
+*/
+
+
+
+--PROCEDIMIENTO 5
+/*Crear un procedimiento que permita realizar un dep√≥sito,
+similar al procedimiento anterior, deber√° validar los posibles
+casos para que se apruebe / se rechace esta transacci√≥n. Ejemplo,
+validar los montos m√≠nimos y m√°ximos para cada medio de pago.
+Si hay alguna novedad guardar el motivo por el cual fue rechazado.
+El sistema deber√° validar los l√≠mites de dep√≥sitos para cada usuario.*/
+CREATE OR REPLACE PROCEDURE PCN_DEPOSITAR(
+    ID_USER       IN NUMBER,
+    ID_CLASS      IN NUMBER,
+    VALUE_DEPOSIT IN NUMBER )
+AS
+  ESTADO         VARCHAR2(10):='SUCCESS';
+  CONTADOR       NUMBER;
+  OBSERVACION    VARCHAR2(200):='SUCCESSFULL';
+  ACUM_DIARIO    NUMBER;
+  ACUM_SEMANA    NUMBER;
+  ACUM_MES       NUMBER;
+  LIMITE_DIARIO  NUMBER;
+  LIMITE_SEMANA  NUMBER;
+  LIMITE_MES     NUMBER;
+  ID_TRANSACTION NUMBER;
+BEGIN
+  --Validar l√¨mite por medio de pago.
+  SELECT COUNT(1)
+  INTO CONTADOR
+  FROM PAYMENT_CLASS
+  WHERE ACTIVE       = 'Y'
+  AND ID_PAY_CLASS   = ID_CLASS
+  AND MINIMUM_VALUE <= VALUE_DEPOSIT;
+  IF CONTADOR        = 0 THEN
+    ESTADO          := 'REJECTED';
+    OBSERVACION     := 'VALOR DEL DEP√íSITO ES MENOR AL M√åNIMO PERMITIDO';
+  END IF;
+  SELECT COUNT(1)
+  INTO CONTADOR
+  FROM PAYMENT_CLASS
+  WHERE ACTIVE        = 'Y'
+  AND ID_PAY_CLASS    = ID_CLASS
+  AND MAXIIMUM_VALUE >= VALUE_DEPOSIT;
+  IF CONTADOR         = 0 THEN
+    ESTADO           := 'REJECTED';
+    OBSERVACION      := 'VALOR DEL DEP√íSITO ES MAYOR AL M√ÄXIMO PERMITIDO';
+  END IF;
+  BEGIN
+    SELECT MAXIMUM_DAILY,
+      MAXIMUM_WEEKLY,
+      MAXIMUM_MONTHLY
+    INTO LIMITE_DIARIO,
+      LIMITE_SEMANA,
+      LIMITE_MES
+    FROM LIMIT_DEPOSIT
+    WHERE FK_DATAUSER = ID_USER
+    AND ACTIVE        ='Y';
+    SELECT SUM(TRANSACTIONS.TRANSACTION_VALUE)
+    INTO ACUM_DIARIO
+    FROM DEPOSIT
+    INNER JOIN TRANSACTIONS
+    ON DEPOSIT.FK_TRANSACTION             = TRANSACTIONS.ID_TRANSACTIONS
+    WHERE DEPOSIT.FK_USER                 = ID_USER
+    AND DEPOSIT.STATUS                    = 'EXITOSO'
+    AND DEPOSIT.TRANSACTION_DATE          > TRUNC(SYSDATE); --TRUNC LE QUITA LAS HORA A LAS FECHAS
+    IF NVL(ACUM_DIARIO,0) + VALUE_DEPOSIT > LIMITE_DIARIO THEN
+      ESTADO                             := 'REJECTED';
+      OBSERVACION                        := 'VALOR DEL DEP√íSITO ES MAYOR AL M√ÄXIMO PERMITIDO DIARIO POR EL USUARIO';
+    END IF;
+    SELECT SUM(TRANSACTIONS.TRANSACTION_VALUE)
+    INTO ACUM_SEMANA
+    FROM DEPOSIT
+    INNER JOIN TRANSACTIONS
+    ON DEPOSIT.FK_TRANSACTION             = TRANSACTIONS.ID_TRANSACTIONS
+    WHERE DEPOSIT.FK_USER                 = ID_USER
+    AND DEPOSIT.STATUS                    = 'EXITOSO'
+    AND DEPOSIT.TRANSACTION_DATE          > TRUNC(sysdate, 'DAY'); --TRUNC LE QUITA LAS HORA A LAS FECHAS
+    IF NVL(ACUM_SEMANA,0) + VALUE_DEPOSIT > LIMITE_SEMANA THEN
+      ESTADO                             := 'REJECTED';
+      OBSERVACION                        := 'VALOR DEL DEP√íSITO ES MAYOR AL M√ÄXIMO PERMITIDO SEMANAL POR EL USUARIO';
+    END IF;
+    SELECT SUM(TRANSACTIONS.TRANSACTION_VALUE)
+    INTO ACUM_MES
+    FROM DEPOSIT
+    INNER JOIN TRANSACTIONS
+    ON DEPOSIT.FK_TRANSACTION          = TRANSACTIONS.ID_TRANSACTIONS
+    WHERE DEPOSIT.FK_USER              = ID_USER
+    AND DEPOSIT.STATUS                 = 'EXITOSO'
+    AND DEPOSIT.TRANSACTION_DATE       > TRUNC(sysdate, 'MONTH'); --TRUNC LE QUITA LAS HORA A LAS FECHAS
+    IF NVL(ACUM_MES,0) + VALUE_DEPOSIT > LIMITE_MES THEN
+      ESTADO                          := 'REJECTED';
+      OBSERVACION                     := 'VALOR DEL DEP√íSITO ES MAYOR AL M√ÄXIMO PERMITIDO MENSUAL POR EL USUARIO';
+    END IF;
+  EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    NULL;
+  END;
+  ID_TRANSACTION := SEQ_TRANSACION_ID.nextval;
+  INSERT
+  INTO TRANSACTIONS
+    (
+      ID_TRANSACTIONS,
+      DESCRIPTIONS,
+      TYPE_TRANSACTIONS,
+      STATUS,
+      TRANSACTION_VALUE,
+      ACTIVE,
+      FK_USER
+    )
+    VALUES
+    (
+      ID_TRANSACTION,
+      OBSERVACION,
+      'DEPOSITO',
+      ESTADO,
+      VALUE_DEPOSIT,
+      'Y',
+      ID_USER
+    );
+  INSERT
+  INTO DEPOSIT
+    (
+      ID_DEPOSIT,
+      TRANSACTION_DATE,
+      STATUS,
+      ACTIVE,
+      FK_USER,
+      FK_PAY_CLASS,
+      FK_TRANSACTION
+    )
+    VALUES
+    (
+      SEQ_DEPOSIT_ID.nextval,
+      SYSDATE,
+      DECODE( ESTADO,'SUCCESS' ,'EXITOSO', 'RECHAZADA'),
+      'Y',
+      ID_USER,
+      ID_CLASS,
+      ID_TRANSACTION
+    );
+END PCN_DEPOSITAR;  
+
+--PROCEDIMIENTO 6
+    /*Crear un procedimiento almacenado que invoque la vista de sesiones activas
+    y coloque el campo fin de sesi√≥n con el timestamp actual,
+    esto aplicar√° solo para aquellos usuarios que han excedido el
+    tiempo en el sistema dependiendo de sus preferencias personales.*/
+    CREATE
+  OR REPLACE PROCEDURE PCN_CERRAR_SESION AS BEGIN
+  UPDATE LOGIN
+  SET END_HOUR    = SYSTIMESTAMP
+  WHERE ID_LOGIN IN
+    (SELECT ID_LOGIN FROM TIEMPO_CONEXION WHERE TIEMPO_FALTANTE <= 0
+    );
+END PCN_CERRAR_SESION;
+>>>>>>> Stashed changes
 
 
