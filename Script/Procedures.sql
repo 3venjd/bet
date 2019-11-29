@@ -56,7 +56,8 @@ UPDATE MATCH_  SET STATUS = 'FINALIZADO' WHERE ID_MATCH = 1;
 
 =======
 /*
-3) Crear un procedimiento que coloque un partido en estado "FINALIZADO", en ese momento deberá calcular las ganancias y pérdidas de cada apuesta hecha asociada a ese partido.
+-PROCEDIMIENTO 3
+Crear un procedimiento que coloque un partido en estado "FINALIZADO", en ese momento deberá calcular las ganancias y pérdidas de cada apuesta hecha asociada a ese partido.
 
 */
 >>>>>>> Stashed changes
