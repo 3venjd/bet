@@ -175,30 +175,54 @@ END ;
 
 /*
 PROCEDIMIENTO 4
-Crear un procedimiento que permita procesar el retiro de ganancias, recibirá el monto solicitado y el id del usuario, este procedimiento deberá insertar un registro en la tabla movimientos
-/ retiros en estado "PENDIENTE", posteriormente deberá validar si el saldo es suficiente, si el usuario ha proveído toda la documentación exigida. También validará que si tenga una cuenta 
-y un banco válido registrado. Si todo se valida sin problemas, deberá colocar el estado "APROBADO" en el registro correspondiente y deberá restar del saldo disponible el valor retirado. 
-Si el procedimiento falla alguna validación, el estado pasará a "RECHAZADO". El sistema deberá almacenar cuál es la novedad por la cual se rechazó (Ya ustedes deciden si crean 
-una nueva tabla, o colocan en la tabla de retiros una columna de observaciones).
+Crear un procedimiento que permita procesar el retiro de ganancias, recibirá el monto solicitado y el id del usuario, este procedimiento deberá insertar un registro en la tabla 
+movimientos / retiros en estado "PENDIENTE", posteriormente deberá validar si el saldo es suficiente, si el usuario ha proveído toda la documentación exigida. También validará 
+que si tenga una cuenta y un banco válido registrado. Si todo se valida sin problemas, deberá colocar el estado "APROBADO" en el registro correspondiente y deberá restar del 
+saldo disponible el valor retirado. Si el procedimiento falla alguna validación, el estado pasará a "RECHAZADO". El sistema deberá almacenar cuál es la novedad por la cual se 
+rechazó (Ya ustedes deciden si crean una nueva tabla, o colocan en la tabla de retiros una columna de observaciones).
 */
 
-CREATE OR REPLACE PROCEDURE WITHDRAWS_PROFITS (AMOUNT FLOAT,ID_USER INT)  IS 
+ CREATE PROCEDURE WITHDRAWS_PROFITS (AMOUNT FLOAT,ID_USER INT) 
+  AS
+   CURSOR CR_WP IS 
+        SELECT T.STATUS, U.BALANCE, P.APPROVED
+        FROM DATAUSER U
+        INNER JOIN TRANSACTIONS T
+        ON U.ID_USER = T.FK_USER   
+        INNER JOIN WITHDRAW W
+        ON W.FK_USER = U.ID_USER
+        INNER JOIN PROOF P
+        ON P.FK_WITHDRAW =W.ID_WITHDRAW
+        WHERE U.ID_USER = ID_USER
+        ;
+        
+        T_STATUS TRANSACTIONS.STATUS%TYPE;
+        U_BALANCE DATAUSER.BALANCE%TYPE;
+        P_APPROVED PROOF.APPROVED%TYPE;
+        
+  BEGIN
+    INSERT INTO TRANSACTIONS 
+         (ID_TRANSACTIONS,DECRIPTIONS,TYPE_TRANSACTIONS,STATUS,TRANSACTION_VALUE,ACTIVE) 
+        VALUES(ID_USER,'CHECKING INFORMATION','REVISION','PENDIENTE',AMOUNT,'Y');
+    OPEN CR_WP;
+    
+        FETCH CR_WP INTO  T_STATUS,U_BALANCE,P_APPROVED;
+        
+        IF U_BALANCE < AMOUNT THEN
+            DBMS_OUTPUT.PUT_LINE( 'Saldo no disponible');
+            UPDATE TRANSACTIONS SET STATUS = 'REJECTED' WHERE ID_TRANSACTONS = ID_USER;
+        ELSIF P_APPROVED = 'DENIED' THEN
+            DBMS_OUTPUT.PUT_LINE( 'No tiene los documentos requeridos');
+            UPDATE TRANSACTIONS SET STATUS  = 'REJECTED' WHERE ID_TRANSACTONS = ID_USER;
+        ELSE
+            UPDATE TRANSACTIONS SET STATUS = 'APPROVED';
+            UPDATE DATAUSER SET BALANCE = BALANCE - AMOUNT WHERE ID_USER = ID_USER;
+        END IF;
+       
+        
+    END CR_WP;
+  END;
 
-DECLARE
-
-BEGIN
-
-END;
-
-
-SELECT * FROM DATAUSER U
-INNER JOIN TRANSACTIONS T
-ON U.ID_USER = T.FK_USER   
-INNER JOIN WITHDRAW W
-ON W.FK_USER = U.ID_USER
-INNER JOIN PROOF P
-ON P.FK_WITHDRAW =W.ID_WITHDRAW
-;
 
 
 
