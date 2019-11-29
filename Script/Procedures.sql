@@ -180,9 +180,25 @@ Crear un procedimiento que permita procesar el retiro de ganancias, recibirá el 
 y un banco válido registrado. Si todo se valida sin problemas, deberá colocar el estado "APROBADO" en el registro correspondiente y deberá restar del saldo disponible el valor retirado. 
 Si el procedimiento falla alguna validación, el estado pasará a "RECHAZADO". El sistema deberá almacenar cuál es la novedad por la cual se rechazó (Ya ustedes deciden si crean 
 una nueva tabla, o colocan en la tabla de retiros una columna de observaciones).
-
-
 */
+
+CREATE OR REPLACE PROCEDURE WITHDRAWS_PROFITS (AMOUNT FLOAT,ID_USER INT)  IS 
+
+DECLARE
+
+BEGIN
+
+END;
+
+
+SELECT * FROM DATAUSER U
+INNER JOIN TRANSACTIONS T
+ON U.ID_USER = T.FK_USER   
+INNER JOIN WITHDRAW W
+ON W.FK_USER = U.ID_USER
+INNER JOIN PROOF P
+ON P.FK_WITHDRAW =W.ID_WITHDRAW
+;
 
 
 
