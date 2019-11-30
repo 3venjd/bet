@@ -182,8 +182,8 @@ saldo disponible el valor retirado. Si el procedimiento falla alguna validación,
 rechazó (Ya ustedes deciden si crean una nueva tabla, o colocan en la tabla de retiros una columna de observaciones).
 */
 
- CREATE PROCEDURE WITHDRAWS_PROFITS (AMOUNT FLOAT,ID_USER INT) 
-  AS
+CREATE OR REPLACE PROCEDURE WITHDRAWING_PROFITS (AMOUNT FLOAT,ID_USER INT) 
+  IS
    CURSOR CR_WP IS 
         SELECT T.STATUS, U.BALANCE, P.APPROVED
         FROM DATAUSER U
@@ -202,7 +202,7 @@ rechazó (Ya ustedes deciden si crean una nueva tabla, o colocan en la tabla de r
         
   BEGIN
     INSERT INTO TRANSACTIONS 
-         (ID_TRANSACTIONS,DECRIPTIONS,TYPE_TRANSACTIONS,STATUS,TRANSACTION_VALUE,ACTIVE) 
+         (ID_TRANSACTIONS,DESCRIPTIONS,TYPE_TRANSACTIONS,STATUS,TRANSACTION_VALUE,ACTIVE) 
         VALUES(ID_USER,'CHECKING INFORMATION','REVISION','PENDIENTE',AMOUNT,'Y');
     OPEN CR_WP;
     
@@ -210,18 +210,16 @@ rechazó (Ya ustedes deciden si crean una nueva tabla, o colocan en la tabla de r
         
         IF U_BALANCE < AMOUNT THEN
             DBMS_OUTPUT.PUT_LINE( 'Saldo no disponible');
-            UPDATE TRANSACTIONS SET STATUS = 'REJECTED' WHERE ID_TRANSACTONS = ID_USER;
+            UPDATE TRANSACTIONS SET STATUS = 'REJECTED' WHERE ID_TRANSACTIONS = ID_USER;
         ELSIF P_APPROVED = 'DENIED' THEN
             DBMS_OUTPUT.PUT_LINE( 'No tiene los documentos requeridos');
-            UPDATE TRANSACTIONS SET STATUS  = 'REJECTED' WHERE ID_TRANSACTONS = ID_USER;
+            UPDATE TRANSACTIONS SET STATUS  = 'REJECTED' WHERE ID_TRANSACTIONS = ID_USER;
         ELSE
             UPDATE TRANSACTIONS SET STATUS = 'APPROVED';
             UPDATE DATAUSER SET BALANCE = BALANCE - AMOUNT WHERE ID_USER = ID_USER;
         END IF;
-       
-        
-    END CR_WP;
-  END;
+    CLOSE CR_WP;
+  END; 
 
 
 
@@ -378,3 +376,39 @@ END PCN_DEPOSITAR;
     (SELECT ID_LOGIN FROM TIEMPO_CONEXION WHERE TIEMPO_FALTANTE <= 0
     );
 END PCN_CERRAR_SESION;
+
+--PROCEDIMIENTO 7
+/*Crear un procedimiento que reciba el ID de una APUESTA (Las que efectuan los usuarios) y reciba: id_usuario, valor, tipo_apuesta_id, cuota, opción ganadora 
+(Ya cada uno mirará como manejan esta parte conforme al diseño que tengan). Con estos parámetros deberá insertar un registro en la tabla detalles de apuesta en estado 
+"ABIERTA".*/
+
+
+CREATE OR REPLACE PROCEDURE CREATE_BET (ID_USER INT,B_VAL FLOAT,BET_CAT INT,B_QUOTA INT,W_OPC INT)  IS
+
+CURSOR CR_BET_CREATE IS 
+        SELECT *
+        FROM DATAUSER U
+        INNER JOIN BET B
+        ON B.FK_DATAUSER = U.ID_USER
+        INNER JOIN BET_DETAIL BD
+        ON BD.FK_USER = U.ID_USER
+        INNER JOIN QUOTA_MATCH QM
+        ON BD.FK_QUOTA_MATCH = QM.ID_QUOTA_MATCH
+        INNER JOIN BET_CATEGORY BC
+        ON BC.ID_BET_CATEGORY = QM.FK_BET_CATEGORY
+        WHERE U.ID_USER = ID_USER
+        ;
+
+BEGIN
+
+     INSERT INTO BET_DETAIL 
+         (ID_BET_DETAIL,QOUTA,B_VAL,STATUS,ACTIVE,FK_QU) 
+        VALUES(ID_USER,'CHECKING INFORMATION','REVISION','PENDIENTE',AMOUNT,'Y');
+
+END;
+
+
+
+
+
+

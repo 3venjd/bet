@@ -137,26 +137,3 @@ GRANT CREATE SESSION TO EVELIODBA;
 
 
 SELECT * FROM USER_USERS;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
